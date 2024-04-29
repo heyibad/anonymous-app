@@ -14,12 +14,13 @@ export const emailValidation = z
     .regex(/^[a-zA-Z0-9_]+$/, {
         message: "Email must contain only letters and numbers",
     });
+export const passwordValidation = z
+    .string()
+    .min(6, { message: "Password must be at least 6 characters long" })
+    .max(16, { message: "Password must be at most 16 characters long" });
 
 export const SignValidation = z.object({
     username: userNameValidation,
     email: emailValidation,
-    password: z
-        .string()
-        .min(6, "Password minimum length is 6")
-        .max(16, "Password maximum length is 16"),
+    password: passwordValidation,
 });
