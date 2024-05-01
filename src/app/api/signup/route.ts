@@ -64,6 +64,7 @@ export async function POST(request: Request) {
                 isAcceptingMassages: true,
                 messages: [],
             });
+            
             if (!user) {
                 return Response.json(
                     { status: false, message: "Error while creating user" },
