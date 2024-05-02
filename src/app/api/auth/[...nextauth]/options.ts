@@ -52,4 +52,26 @@ import bcrypt from "bcrypt";
             strategy: 'jwt',
         },
         secret: process.env.SECRET,
+        callbacks:{
+            async jwt({token, user}){
+                if(user){
+                    token._id = user._id?.toString();
+                    token.username = user.username;
+                    token.email = user.email;
+                    token.isVerified = user.isVerified;
+                    token.isAcceptingMassages = user.isAcceptingMassages;
+                }
+                return token;
+            },
+            async session({session, token}){
+                if(token){
+                session.user._id = token._id;
+                session.user.username = token.username;
+                session.user.email = token.email;
+                session.user.isVerified = token.isVerified;
+                session.user.isAcceptingMassages = token.isAcceptingMassages;
+                }
+                return session;
+            }
+        }
     };
