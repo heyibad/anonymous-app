@@ -28,7 +28,7 @@ export async function name(req: NextRequest) {
         );
     } catch (error) {
         return Response.json(
-            { message: "Internal server error", status: false },
+            { message: "Internal server error || Message Failed", status: false },
             { status: 500 }
         );
     }
