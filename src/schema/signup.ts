@@ -11,9 +11,7 @@ export const userNameValidation = z
 export const emailValidation = z
     .string()
     .email()
-    .regex(/^[a-zA-Z0-9_]+$/, {
-        message: "Email must contain only letters and numbers",
-    });
+  ;
 export const passwordValidation = z
     .string()
     .min(6, { message: "Password must be at least 6 characters long" })
