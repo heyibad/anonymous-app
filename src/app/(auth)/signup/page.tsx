@@ -176,7 +176,9 @@ const Page = () => {
                         >
                             {loading ? (
                                 <>
-                                    <Loader2 className="animate-spin" /> Please wait
+                                    <Loader2 className="animate-spin" />  <p className="ml-2">
+                                    Please wait
+                                    </p>
                                 </>
                             ) : (
                                 "Sign Up"

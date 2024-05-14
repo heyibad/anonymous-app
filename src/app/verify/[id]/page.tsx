@@ -35,11 +35,13 @@ const Page = () => {
     const submit = async (data: z.infer<typeof verify>) => {
         try {
             setLoading(true);
+            console.log(data.verifyCode, param.id)
             const req = await axios.post("/api/verify", {
                 code: data.verifyCode,
                 username: param.id,
             });
-            if (req.data.success) {
+            console.log(req)
+            if (req.data.status) {
                 toast({
                     description: req.data.message ?? "Successfully Verified",
                     title: "Success",
