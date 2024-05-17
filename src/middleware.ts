@@ -7,12 +7,10 @@ export const config = {
 };
 
 export async function middleware(request: NextRequest) {
-  const token = await getToken({ req: request });
-  console.log("token",token)
+  const token = await getToken({ req: request, secret: process.env.SECRET });
+  console.log("Token in middleware:", token);
   const url = request.nextUrl;
 
-  // Redirect to dashboard if the user is already authenticated
-  // and trying to access sign-in, sign-up, or home page
   if (
     token &&
     (url.pathname.startsWith('/login') ||
